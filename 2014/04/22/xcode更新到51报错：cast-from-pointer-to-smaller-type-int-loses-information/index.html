@@ -4,12 +4,17 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Github Page | 毁灭阴影</title>
+    <title>xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information | 毁灭阴影</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Misery">
     
-    <meta name="description" content="程序员提升逼格利器：hexo">
+    <meta name="description" content="Xcode更新到5.1版本之后，项目中一个SearchCore文件报错
+1
+Cast from pointer to smaller type &#39;int&#39; loses information
+
+
+由于5.1编译包括了arm64，导致指针大小长度编程8字节。解决方法：修改target的build se">
     
     
     
@@ -73,15 +78,15 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/04/21/github-page/" title="Github Page" itemprop="url">Github Page</a>
+      <a href="/2014/04/22/xcode更新到51报错：cast-from-pointer-to-smaller-type-int-loses-information/" title="xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information" itemprop="url">xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://SFKong.github.com" title="Misery">Misery</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-04-21T15:01:14.000Z" itemprop="datePublished">4月 21 2014</time>
-    更新日期:<time datetime="2014-04-21T16:06:02.000Z" itemprop="dateModified">4月 22 2014</time>
+    <time datetime="2014-04-22T03:42:46.000Z" itemprop="datePublished">4月 22 2014</time>
+    更新日期:<time datetime="2014-04-22T05:03:58.000Z" itemprop="dateModified">4月 22 2014</time>
     
   </p>
 </header>
@@ -93,7 +98,12 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 		
 		</div>
 		
-		<p>程序员提升逼格利器：hexo<br><a id="more"></a></p>
+		<p>Xcode更新到5.1版本之后，项目中一个SearchCore文件报错</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>Cast <span class="keyword">from</span> pointer <span class="keyword">to</span> smaller <span class="keyword">type</span> <span class="string">'int'</span> loses information
+</pre></td></tr></table></figure>
+
+<p>由于5.1编译包括了arm64，导致指针大小长度编程8字节。<br>解决方法：<br>修改target的build setting中的Architectures,删除$(ARCHS_STANDARD)，添加armv7和armv7s，重新编译即可</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -101,14 +111,14 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/hexo/">hexo</a>
+  <a class="article-category-link" href="/categories/xcode/">xcode</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://SFKong.github.com/2014/04/21/github-page/" data-title="Github Page | 毁灭阴影" data-tsina="null" class="share clearfix">
+  <div data-url="http://SFKong.github.com/2014/04/22/xcode更新到51报错：cast-from-pointer-to-smaller-type-int-loses-information/" data-title="xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information | 毁灭阴影" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -117,14 +127,14 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/04/22/xcode更新到51报错：cast-from-pointer-to-smaller-type-int-loses-information/" title="xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information</span>
+
+<div class="next">
+<a href="/2014/04/21/github-page/"  title="Github Page">
+ <strong>NEXT:</strong><br/> 
+ <span>Github Page
+</span>
 </a>
 </div>
-
 
 </nav>
 
