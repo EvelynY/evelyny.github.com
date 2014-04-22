@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[毁灭阴影]]></title>
+  <subtitle><![CDATA[先天性精神病患者]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://SFKong.github.com/"/>
+  <updated>2014-04-22T07:43:05.299Z</updated>
+  <id>http://SFKong.github.com/</id>
+  
+  <author>
+    <name><![CDATA[Misery]]></name>
+    <email><![CDATA[715616554@qq.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[xcode更新到5.1报错：Cast from pointer to smaller type 'int' loses information]]></title>
+    <link href="http://SFKong.github.com/2014/04/22/xcode%E6%9B%B4%E6%96%B0%E5%88%B051%E6%8A%A5%E9%94%99%EF%BC%9Acast-from-pointer-to-smaller-type-int-loses-information/"/>
+    <id>http://SFKong.github.com/2014/04/22/xcode更新到51报错：cast-from-pointer-to-smaller-type-int-loses-information/</id>
+    <published>2014-04-22T03:42:46.000Z</published>
+    <updated>2014-04-22T05:03:58.000Z</updated>
+    <content type="html"><![CDATA[<p>Xcode更新到5.1版本之后，项目中一个SearchCore文件报错</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>Cast <span class="keyword">from</span> pointer <span class="keyword">to</span> smaller <span class="keyword">type</span> <span class="string">'int'</span> loses information
+</pre></td></tr></table></figure>
+
+<p>由于5.1编译包括了arm64，导致指针大小长度编程8字节。<br>解决方法：<br>修改target的build setting中的Architectures,删除$(ARCHS_STANDARD)，添加armv7和armv7s，重新编译即可</p>
+]]></content>
+    
+    
+      <category term="xcode" scheme="http://SFKong.github.com/categories/xcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Github Page]]></title>
+    <link href="http://SFKong.github.com/2014/04/21/github-page/"/>
+    <id>http://SFKong.github.com/2014/04/21/github-page/</id>
+    <published>2014-04-21T15:01:14.000Z</published>
+    <updated>2014-04-21T16:06:02.000Z</updated>
+    <content type="html"><![CDATA[<p>程序员提升逼格利器：hexo<br><a id="more"></a></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>程序员提升逼格利器：hexo<br>]]></summary>
+    
+      <category term="hexo" scheme="http://SFKong.github.com/categories/hexo/"/>
+    
+  </entry>
+  
+</feed>
