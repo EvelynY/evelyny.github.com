@@ -4,7 +4,7 @@
   <subtitle><![CDATA[程序员 先天性失乐症患者 手SF的逗比]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://SFKong.github.com/"/>
-  <updated>2014-04-27T14:13:10.893Z</updated>
+  <updated>2014-04-27T15:19:17.503Z</updated>
   <id>http://SFKong.github.com/</id>
   
   <author>
@@ -13,6 +13,145 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Objective-C中属性@property中atomic的实现]]></title>
+    <link href="http://SFKong.github.com/2014/04/27/objective-c%E4%B8%AD%E5%B1%9E%E6%80%A7@property%E4%B8%ADatomic%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://SFKong.github.com/2014/04/27/objective-c中属性@property中atomic的实现/</id>
+    <published>2014-04-27T14:15:36.000Z</published>
+    <updated>2014-04-27T15:19:04.000Z</updated>
+    <content type="html"><![CDATA[<p>Objective-C中，属性@property默认是线程不安全的，也就是常见的nonatomic，这个时候，如果多个线程同时操作这个属性就可能会出现问题，这时需要设置属性为atomic，当然也可以通过代码来控制线程安全；</p>
+<ul>
+<li>使用@synchronized<br>这种方法是使用苹果提供的“synchronization block”来实现，</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>- (void)synchronizedMethod
+{
+    <span class="variable">@synchronized</span>(<span class="keyword">self</span>){
+        <span class="regexp">//</span>线程安全代码
+    }
+}
+</pre></td></tr></table></figure>
+
+<p>这个方法根据给定的self对象创建锁，等待{}中的代码执行完毕，释放锁，这种写法会面临效率问题，如果在同一个类中多处使用了这个写法，这些地方的代码都需要按顺序执行，虽然有可能这些方法并不相关。<br>－ 使用NSLock<br>通过创建NSLock对象来进行同步操作，</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre>_lock = [[NSLock alloc] init];
+- (<span class="keyword">void</span>)synchronizedMethod
+{
+    [_lock <span class="keyword">lock</span>];
+    <span class="comment">//线程安全代码</span>
+    [_lock unlock];
+}
+</pre></td></tr></table></figure>
+
+<p>这里的NSLock保证了代码在的线程安全，另一种NSRecursiveLock用法类似，不过线程可以多次持有该锁。<br>以上两种方式，在某些情况下会出现死锁，效率也不一定高，下面就是本文的重点了，使用GCD来实现更加高效简单的代码加锁<br>－ 使用GCD<br>创建串行队列，将代码放在串行队列中执行保证线程安全。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre>_syncQueue = dispatch_queue_create(<span class="string">"io.sfkong"</span>, <span class="literal">NULL</span>);
+- (<span class="keyword">void</span>)synchronizedMethod
+{
+    <span class="built_in">dispatch_sync</span>(_syncQueue, ^{
+       <span class="comment">//线程安全代码</span>
+    });
+}
+</pre></td></tr></table></figure>
+
+<p>这个操作放在setter和getter里面再合适不过了:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre>- (<span class="built_in">NSString</span> *)someString
+{
+    __block <span class="built_in">NSString</span> *localSomeString;
+    <span class="built_in">dispatch_sync</span>(_syncQueue, ^{
+        localSomeString = _someString;
+    });
+    <span class="keyword">return</span> localSomeString;
+}
+- (<span class="keyword">void</span>)setSomeString:(<span class="built_in">NSString</span> *)someString
+{
+    <span class="built_in">dispatch_sync</span>(_syncQueue, ^{
+        _someString = someString;
+    });
+}
+</pre></td></tr></table></figure>
+
+<p>将属性操作放在串行队列中，所有针对属性的操作都同步了。另GCD的底层实现，使得这段代码的优化更好，开发者也无需担心代码的优化问题。</p>
+<ul>
+<li>进一步优化<br>由于setter不需要立刻返回，可以将以上setter里面的同步函数换成异步dispatch_async，来进一步提升性能，当然这样也是有代价的，异步函数会对block进行拷贝，如果block中代码执行的速度快于block的拷贝速度，则还是选择dispatch_sync来执行代码，所以具体问题具体分析，选择合适的函数来执行。</li>
+<li>将优化进行到底<br>通常，多个getter之间是可以并发执行的，而setter和getter之间是不允许并发执行，利用这个特点，可以写出速度更快的代码，使用NSLock很难实现，这时GCD的好处就体现出来了：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre>_syncQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);
+- (<span class="built_in">NSString</span> *)someString
+{
+    __block <span class="built_in">NSString</span> *localSomeString;
+    <span class="built_in">dispatch_sync</span>(_syncQueue, ^{
+        localSomeString = _someString;
+    });
+    <span class="keyword">return</span> localSomeString;
+}
+- (<span class="keyword">void</span>)setSomeString:(<span class="built_in">NSString</span> *)someString
+{
+    dispatch_barrier_sync(_syncQueue, ^{
+        _someString = someString;
+    });
+}
+</pre></td></tr></table></figure>
+
+<p>这里使用并发队列，getter可以被随时调用不会出现锁的问题，setter方法使用栅栏(barrier)来进行保护，保证setter的线程安全；代码跑得飞快有木有</p>
+<blockquote>
+<p>参考《Effective Objective-C》，如有雷同，纯属本文抄袭！！</p>
+</blockquote>
+]]></content>
+    
+    
+      <category term="同步锁" scheme="http://SFKong.github.com/categories/%E5%90%8C%E6%AD%A5%E9%94%81/"/>
+    
+      <category term="GCD" scheme="http://SFKong.github.com/categories/%E5%90%8C%E6%AD%A5%E9%94%81/GCD/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[使用GCD替换performSelector这一类方法]]></title>
