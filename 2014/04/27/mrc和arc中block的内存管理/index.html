@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>使用GCD替换perforSelector这一类方法 | 毁灭阴影</title>
+    <title>使用GCD替换performSelector这一类方法 | 毁灭阴影</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Misery">
@@ -78,7 +78,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/04/27/mrc和arc中block的内存管理/" title="使用GCD替换perforSelector这一类方法" itemprop="url">使用GCD替换perforSelector这一类方法</a>
+      <a href="/2014/04/27/mrc和arc中block的内存管理/" title="使用GCD替换performSelector这一类方法" itemprop="url">使用GCD替换performSelector这一类方法</a>
   </h1>
   <p class="article-author">By
     
@@ -86,7 +86,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </p>
   <p class="article-time">
     <time datetime="2014-04-27T11:54:44.000Z" itemprop="datePublished">4月 27 2014</time>
-    更新日期:<time datetime="2014-04-27T13:49:34.000Z" itemprop="dateModified">4月 27 2014</time>
+    更新日期:<time datetime="2014-04-27T13:53:17.000Z" itemprop="dateModified">4月 27 2014</time>
     
   </p>
 </header>
@@ -120,7 +120,12 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     })</span>;
 </pre></td></tr></table></figure>
 
-<p>好处就是，逼格更高！！！</p>
+<p>好处就是，可以避免performSelector这一类方法带来的内存警告：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>warning:performSelector may cause a leak because its selector is unknown <span class="preprocessor">[</span><span class="attribute">-Warc</span><span class="attribute">-performSelector</span><span class="attribute">-leaks</span><span class="preprocessor">]</span><span class="markup"></span>
+</pre></td></tr></table></figure>
+
+<p>更重要的是，使用GCD逼格更高！！！</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -135,7 +140,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
 <div class="article-share" id="share">
 
-  <div data-url="http://SFKong.github.com/2014/04/27/mrc和arc中block的内存管理/" data-title="使用GCD替换perforSelector这一类方法 | 毁灭阴影" data-tsina="null" class="share clearfix">
+  <div data-url="http://SFKong.github.com/2014/04/27/mrc和arc中block的内存管理/" data-title="使用GCD替换performSelector这一类方法 | 毁灭阴影" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
