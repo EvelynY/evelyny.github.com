@@ -4,7 +4,7 @@
   <subtitle><![CDATA[先天性精神病患者]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://SFKong.github.com/"/>
-  <updated>2014-04-22T10:59:39.612Z</updated>
+  <updated>2014-04-27T13:49:45.137Z</updated>
   <id>http://SFKong.github.com/</id>
   
   <author>
@@ -13,6 +13,44 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[使用GCD替换perforSelector这一类方法]]></title>
+    <link href="http://SFKong.github.com/2014/04/27/mrc%E5%92%8Carc%E4%B8%ADblock%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    <id>http://SFKong.github.com/2014/04/27/mrc和arc中block的内存管理/</id>
+    <published>2014-04-27T11:54:44.000Z</published>
+    <updated>2014-04-27T13:49:34.000Z</updated>
+    <content type="html"><![CDATA[<p>在Objective-C中有这样一类方法</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>    [<span class="keyword">self</span> performSelector:<span class="keyword">@selector</span>(aa) withObject:<span class="literal">nil</span> afterDelay:<span class="number">1</span>];
+    [<span class="keyword">self</span> performSelector:<span class="keyword">@selector</span>(aa) onThread:[<span class="built_in">NSThread</span> mainThread] withObject:<span class="literal">nil</span> waitUntilDone:<span class="literal">NO</span>];
+</pre></td></tr></table></figure>
+
+<p>这一系列方法可以将执行时间推迟，也可以指定执行的线程。在引入GCD以后，这些方法就可以使用GCD来替换;<br>例如上面的两个方法就可以这么写:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>    <span class="function">dispatch_after(<span class="function">dispatch_time(DISPATCH_TIME_NOW, (int64_t)</span>(<span class="number">1</span> * NSEC_PER_SEC)</span>), <span class="function">dispatch_get_main_queue()</span>, ^{
+        <span class="attr_selector">[self aa]</span>;
+    });
+    <span class="function">dispatch_async(<span class="function">dispatch_get_main_queue()</span>, ^{
+        [self aa];
+    })</span>;
+</pre></td></tr></table></figure>
+
+<p>好处就是，逼格更高！！！</p>
+]]></content>
+    
+    
+      <category term="GCD" scheme="http://SFKong.github.com/categories/GCD/"/>
+    
+      <category term="block" scheme="http://SFKong.github.com/categories/GCD/block/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[xcode更新到5.1报错：Cast from pointer to smaller type 'int' loses information]]></title>

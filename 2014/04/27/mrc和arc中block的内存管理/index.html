@@ -4,17 +4,16 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information | 毁灭阴影</title>
+    <title>使用GCD替换perforSelector这一类方法 | 毁灭阴影</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Misery">
     
-    <meta name="description" content="Xcode更新到5.1版本之后，项目中一个SearchCore文件报错
+    <meta name="description" content="在Objective-C中有这样一类方法
 1
-Cast from pointer to smaller type &#39;int&#39; loses information
-
-
-由于5.1编译包括了arm64，导致指针大小长度编程8字节。解决方法：修改target的build se">
+2
+    [self performSelector:@selector(aa) withObject:nil afterDelay:1];
+    [self performSelector:@selector(aa) onThread:[NSThr">
     
     
     
@@ -79,15 +78,15 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/04/22/xcode更新到51报错：cast-from-pointer-to-smaller-type-int-loses-information/" title="xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information" itemprop="url">xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information</a>
+      <a href="/2014/04/27/mrc和arc中block的内存管理/" title="使用GCD替换perforSelector这一类方法" itemprop="url">使用GCD替换perforSelector这一类方法</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://SFKong.github.com" title="Misery">Misery</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-04-22T03:42:46.000Z" itemprop="datePublished">4月 22 2014</time>
-    更新日期:<time datetime="2014-04-22T05:03:58.000Z" itemprop="dateModified">4月 22 2014</time>
+    <time datetime="2014-04-27T11:54:44.000Z" itemprop="datePublished">4月 27 2014</time>
+    更新日期:<time datetime="2014-04-27T13:49:34.000Z" itemprop="dateModified">4月 27 2014</time>
     
   </p>
 </header>
@@ -99,12 +98,29 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 		
 		</div>
 		
-		<p>Xcode更新到5.1版本之后，项目中一个SearchCore文件报错</p>
+		<p>在Objective-C中有这样一类方法</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>Cast <span class="keyword">from</span> pointer <span class="keyword">to</span> smaller <span class="keyword">type</span> <span class="string">'int'</span> loses information
+2
+</pre></td><td class="code"><pre>    [<span class="keyword">self</span> performSelector:<span class="keyword">@selector</span>(aa) withObject:<span class="literal">nil</span> afterDelay:<span class="number">1</span>];
+    [<span class="keyword">self</span> performSelector:<span class="keyword">@selector</span>(aa) onThread:[<span class="built_in">NSThread</span> mainThread] withObject:<span class="literal">nil</span> waitUntilDone:<span class="literal">NO</span>];
 </pre></td></tr></table></figure>
 
-<p>由于5.1编译包括了arm64，导致指针大小长度编程8字节。<br>解决方法：<br>修改target的build setting中的Architectures,删除$(ARCHS_STANDARD)，添加armv7和armv7s，重新编译即可</p>
+<p>这一系列方法可以将执行时间推迟，也可以指定执行的线程。在引入GCD以后，这些方法就可以使用GCD来替换;<br>例如上面的两个方法就可以这么写:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>    <span class="function">dispatch_after(<span class="function">dispatch_time(DISPATCH_TIME_NOW, (int64_t)</span>(<span class="number">1</span> * NSEC_PER_SEC)</span>), <span class="function">dispatch_get_main_queue()</span>, ^{
+        <span class="attr_selector">[self aa]</span>;
+    });
+    <span class="function">dispatch_async(<span class="function">dispatch_get_main_queue()</span>, ^{
+        [self aa];
+    })</span>;
+</pre></td></tr></table></figure>
+
+<p>好处就是，逼格更高！！！</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -112,14 +128,14 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/xcode/">xcode</a>
+  <a class="article-category-link" href="/categories/GCD/">GCD</a>►<a class="article-category-link" href="/categories/GCD/block/">block</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://SFKong.github.com/2014/04/22/xcode更新到51报错：cast-from-pointer-to-smaller-type-int-loses-information/" data-title="xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information | 毁灭阴影" data-tsina="null" class="share clearfix">
+  <div data-url="http://SFKong.github.com/2014/04/27/mrc和arc中block的内存管理/" data-title="使用GCD替换perforSelector这一类方法 | 毁灭阴影" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -128,19 +144,11 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/04/27/mrc和arc中block的内存管理/" title="使用GCD替换perforSelector这一类方法">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  使用GCD替换perforSelector这一类方法</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2014/04/21/github-page/"  title="Github Page">
+<a href="/2014/04/22/xcode更新到51报错：cast-from-pointer-to-smaller-type-int-loses-information/"  title="xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information">
  <strong>NEXT:</strong><br/> 
- <span>Github Page
+ <span>xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information
 </span>
 </a>
 </div>
