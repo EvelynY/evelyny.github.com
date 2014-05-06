@@ -4,7 +4,7 @@
   <subtitle><![CDATA[程序员 先天性失乐症患者 手SF的逗比]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://SFKong.github.com/"/>
-  <updated>2014-05-04T09:23:56.904Z</updated>
+  <updated>2014-05-06T03:30:12.380Z</updated>
   <id>http://SFKong.github.com/</id>
   
   <author>
@@ -212,20 +212,6 @@
     
     
       <category term="xcode" scheme="http://SFKong.github.com/tags/xcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Github Page]]></title>
-    <link href="http://SFKong.github.com/2014/04/21/github-page/"/>
-    <id>http://SFKong.github.com/2014/04/21/github-page/</id>
-    <published>2014-04-21T15:01:14.000Z</published>
-    <updated>2014-05-04T09:11:54.000Z</updated>
-    <content type="html"><![CDATA[<p>程序员提升逼格利器：hexo<br><a href="itms-services://?action=download-manifest&url=http://10.68.79.118:1688/plist">测试包下载</a><br><a id="more"></a></p>
-]]></content>
-    <summary type="html"><![CDATA[<p>程序员提升逼格利器：hexo<br><a href="itms-services://?action=download-manifest&url=http://10.68.79.118:1688/plist">测试包下载</a><br>]]></summary>
-    
-      <category term="hexo" scheme="http://SFKong.github.com/tags/hexo/"/>
     
   </entry>
   
