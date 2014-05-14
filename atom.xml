@@ -4,7 +4,7 @@
   <subtitle><![CDATA[程序员 先天性失乐症患者 手SF的逗比]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://SFKong.github.com/"/>
-  <updated>2014-05-06T03:30:12.380Z</updated>
+  <updated>2014-05-14T14:38:44.261Z</updated>
   <id>http://SFKong.github.com/</id>
   
   <author>
@@ -13,6 +13,85 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[使用CFStringTokenizerRef进行分词]]></title>
+    <link href="http://SFKong.github.com/2014/05/14/%E4%BD%BF%E7%94%A8cfstringtokenizerref%E8%BF%9B%E8%A1%8C%E5%88%86%E8%AF%8D/"/>
+    <id>http://SFKong.github.com/2014/05/14/使用cfstringtokenizerref进行分词/</id>
+    <published>2014-05-14T14:19:09.000Z</published>
+    <updated>2014-05-14T14:37:42.000Z</updated>
+    <content type="html"><![CDATA[<p>使用CFStringTokenizer可以对string进行分词，示例代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="code"><pre>    CFStringRef <span class="built_in">string</span> = (__bridge CFStringRef)@<span class="string">"这是一段示例代码"</span>; //你的<span class="built_in">string</span>
+    CFLocaleRef locale = CFLocaleCopyCurrent();
+    
+    CFStringTokenizerRef tokenizer =
+    CFStringTokenizerCreate(
+                            <span class="keyword">nil</span>
+                            , <span class="built_in">string</span>
+                            , CFRangeMake(<span class="number">0</span>, CFStringGetLength(<span class="built_in">string</span>))
+                            , kCFStringTokenizerUnitWord//Tokenization options,按单词分组
+                            , locale);
+    
+    CFStringTokenizerTokenType tokenType = kCFStringTokenizerTokenNone;
+    unsigned tokensFound = <span class="number">0</span>;
+    
+    <span class="keyword">while</span>(kCFStringTokenizerTokenNone !=
+          (tokenType = CFStringTokenizerAdvanceToNextToken(tokenizer))) {
+        CFRange wordRange = CFStringTokenizerGetCurrentTokenRange(tokenizer);
+        NSLog(@<span class="string">"%@"</span>,(__bridge_transfer NSString *)CFStringCreateWithSubstring(<span class="keyword">nil</span>, <span class="built_in">string</span>, wordRange));
+        ++tokensFound;
+    }
+    CFRelease(tokenizer);
+    CFRelease(locale);
+</pre></td></tr></table></figure>
+
+<p>打印输出</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>2014<span class="tag">-05-14</span> 22<span class="pseudo">:35</span><span class="pseudo">:16</span><span class="class">.647</span> <span class="tag">classTest</span><span class="attr_selector">[35429:70b]</span> 这
+2014<span class="tag">-05-14</span> 22<span class="pseudo">:35</span><span class="pseudo">:16</span><span class="class">.661</span> <span class="tag">classTest</span><span class="attr_selector">[35429:70b]</span> 是
+2014<span class="tag">-05-14</span> 22<span class="pseudo">:35</span><span class="pseudo">:16</span><span class="class">.661</span> <span class="tag">classTest</span><span class="attr_selector">[35429:70b]</span> 一
+2014<span class="tag">-05-14</span> 22<span class="pseudo">:35</span><span class="pseudo">:16</span><span class="class">.662</span> <span class="tag">classTest</span><span class="attr_selector">[35429:70b]</span> 段
+2014<span class="tag">-05-14</span> 22<span class="pseudo">:35</span><span class="pseudo">:16</span><span class="class">.662</span> <span class="tag">classTest</span><span class="attr_selector">[35429:70b]</span> 示例
+2014<span class="tag">-05-14</span> 22<span class="pseudo">:35</span><span class="pseudo">:16</span><span class="class">.663</span> <span class="tag">classTest</span><span class="attr_selector">[35429:70b]</span> 代码
+</pre></td></tr></table></figure>
+
+]]></content>
+    
+    
+      <category term="分词" scheme="http://SFKong.github.com/tags/%E5%88%86%E8%AF%8D/"/>
+    
+      <category term="Objective-C" scheme="http://SFKong.github.com/tags/Objective-C/"/>
+    
+      <category term="CFStringTokenizer" scheme="http://SFKong.github.com/tags/CFStringTokenizer/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Objective-C中属性@property中atomic的实现]]></title>
