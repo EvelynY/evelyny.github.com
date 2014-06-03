@@ -4,17 +4,30 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information | Let&#39;s Swift</title>
+    <title>Swift Notes | Let&#39;s Swift</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Misery">
     
-    <meta name="description" content="Xcode更新到5.1版本之后，项目中一个SearchCore文件报错
+    <meta name="description" content="Hello Swift下载Xcode6之后，新建工程，创建Playground就可以直接执行Swift代码：
+
 1
-Cast from pointer to smaller type &#39;int&#39; loses information
+println(&quot;Hello Swift!&quot;)
 
 
-由于5.1编译包括了arm64，导致指针大小长度编程8字节。解决方法：修改target的build se">
+打印输出:Hello Swift!
+
+变量
+
+
+使用let关键字创建常量，使用var关键字创建变量：
+
+1
+2
+3
+4
+5
+var ">
     
     
     
@@ -79,15 +92,15 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/04/22/xcode更新到51报错：cast-from-pointer-to-smaller-type-int-loses-information/" title="xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information" itemprop="url">xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information</a>
+      <a href="/2014/06/03/swift-notes/" title="Swift Notes" itemprop="url">Swift Notes</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://SFKong.github.com" title="Misery">Misery</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-04-22T03:42:46.000Z" itemprop="datePublished">4月 22 2014</time>
-    更新日期:<time datetime="2014-04-27T15:21:50.000Z" itemprop="dateModified">4月 27 2014</time>
+    <time datetime="2014-06-03T13:19:25.000Z" itemprop="datePublished">6月 3 2014</time>
+    更新日期:<time datetime="2014-06-03T14:43:24.000Z" itemprop="dateModified">6月 3 2014</time>
     
   </p>
 </header>
@@ -99,19 +112,107 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 		
 		</div>
 		
-		<p>Xcode更新到5.1版本之后，项目中一个SearchCore文件报错</p>
+		<ul>
+<li>Hello Swift<br>下载Xcode6之后，新建工程，创建Playground就可以直接执行Swift代码：</li>
+</ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>Cast <span class="keyword">from</span> pointer <span class="keyword">to</span> smaller <span class="keyword">type</span> <span class="string">'int'</span> loses information
+</pre></td><td class="code"><pre><span class="function"><span class="title">println</span><span class="params">(<span class="string">"Hello Swift!"</span>)</span></span>
 </pre></td></tr></table></figure>
 
-<p>由于5.1编译包括了arm64，导致指针大小长度编程8字节。<br>解决方法：<br>修改target的build setting中的Architectures,删除$(ARCHS_STANDARD)，添加armv7和armv7s，重新编译即可</p>
+<p>打印输出:Hello Swift!</p>
+<ul>
+<li>变量</li>
+</ul>
+<ul>
+<li>使用<em>let</em>关键字创建常量，使用<em>var</em>关键字创建变量：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="built_in">var</span> <span class="built_in">variable</span> <span class="subst">=</span> <span class="number">24</span>
+<span class="built_in">variable</span> <span class="subst">=</span> <span class="number">25</span>
+<span class="keyword">let</span> constant <span class="subst">=</span> <span class="number">28</span>
+<span class="keyword">let</span> intConstant: Int <span class="subst">=</span> <span class="number">30</span>
+<span class="built_in">var</span> strVariable: <span class="built_in">String</span><span class="subst">?</span> <span class="subst">=</span> <span class="string">"hello"</span>
+</pre></td></tr></table></figure>
+
+<p>（类型后面的”?”标记值为可选，既在后面可以为参数赋其他类型的值）</p>
+<ul>
+<li>不同类型进行运算操作需要添加类型转换，否则报错：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="keyword">let</span> label = <span class="string">"The width is "</span>
+<span class="keyword">let</span> width = <span class="number">94</span>
+<span class="keyword">let</span> widthLabel = label + <span class="built_in">String</span>(width)
+</pre></td></tr></table></figure>
+
+<ul>
+<li>词典和数组</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre><span class="keyword">var</span> array = [<span class="string">"item1"</span>, <span class="string">"item2"</span>, <span class="string">"item3"</span>]
+array[<span class="number">1</span>] = [<span class="string">"item4"</span>]
+<span class="keyword">var</span> dictionary = [<span class="string">"key1"</span>: <span class="string">"value1"</span>,
+				<span class="string">"key2"</span>: <span class="string">"value2"</span>,
+]
+dictionary[<span class="string">"key3"</span>] = <span class="string">"value3"</span>
+
+<span class="keyword">var</span> emptydic = Dictionary&lt;<span class="built_in">String</span>, Int&gt;()
+<span class="keyword">var</span> emptyarr = <span class="built_in">Array</span>&lt;<span class="built_in">String</span>&gt;()
+<span class="keyword">var</span> emptyarr2 = <span class="built_in">String</span>[]()
+</pre></td></tr></table></figure>
+
+<ul>
+<li>控制语句<br>使用<em>for</em> <em>in</em></li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="keyword">var</span> p = <span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.3</span>
+{
+    p += i
+}
+</pre></td></tr></table></figure>
+
+<p><em>for</em> <em>in</em>也可以用于数组和词典</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="keyword">var</span> dictionary = [<span class="string">"key1"</span>: <span class="string">"value1"</span>,
+				<span class="string">"key2"</span>: <span class="string">"value2"</span>,
+]
+<span class="keyword">for</span> (key, <span class="keyword">value</span>) <span class="keyword">in</span> dictionary
+{
+    println( key + <span class="keyword">value</span> )
+}
+</pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/xcode/">xcode</a>
+  <span></span> <a href="/tags/Swift/">Swift</a><a href="/tags/Xcode 6/">Xcode 6</a>
   </div>
 
 
@@ -119,7 +220,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
 <div class="article-share" id="share">
 
-  <div data-url="http://SFKong.github.com/2014/04/22/xcode更新到51报错：cast-from-pointer-to-smaller-type-int-loses-information/" data-title="xcode更新到5.1报错：Cast from pointer to smaller type &#39;int&#39; loses information | Let&#39;s Swift" data-tsina="null" class="share clearfix">
+  <div data-url="http://SFKong.github.com/2014/06/03/swift-notes/" data-title="Swift Notes | Let&#39;s Swift" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -128,14 +229,14 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/04/27/mrc和arc中block的内存管理/" title="使用GCD替换performSelector这一类方法">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  使用GCD替换performSelector这一类方法</span>
+
+<div class="next">
+<a href="/2014/05/14/uicollectionview用法/"  title="UICollectionView用法">
+ <strong>NEXT:</strong><br/> 
+ <span>UICollectionView用法
+</span>
 </a>
 </div>
-
 
 </nav>
 
