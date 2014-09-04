@@ -3,9 +3,9 @@
   <title><![CDATA[Let's Swift]]></title>
   <subtitle><![CDATA[Writing the code, change the world!]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://SFKong.github.com/"/>
-  <updated>2014-06-04T14:00:53.910Z</updated>
-  <id>http://SFKong.github.com/</id>
+  <link href="http://Murk.github.com/"/>
+  <updated>2014-09-04T14:59:45.360Z</updated>
+  <id>http://Murk.github.com/</id>
   
   <author>
     <name><![CDATA[Misery]]></name>
@@ -15,11 +15,22 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Swift Notes(Classes and Objects)]]></title>
+    <link href="http://Murk.github.com/2014/06/05/swift-notes(classes-and-objects)/"/>
+    <id>http://Murk.github.com/2014/06/05/swift-notes(classes-and-objects)/</id>
+    <published>2014-06-05T11:54:39.000Z</published>
+    <updated>2014-06-05T11:54:39.000Z</updated>
+    <content type="html"><![CDATA[]]></content>
+    
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Swift Notes]]></title>
-    <link href="http://SFKong.github.com/2014/06/03/swift-notes/"/>
-    <id>http://SFKong.github.com/2014/06/03/swift-notes/</id>
+    <link href="http://Murk.github.com/2014/06/03/swift-notes/"/>
+    <id>http://Murk.github.com/2014/06/03/swift-notes/</id>
     <published>2014-06-03T13:19:25.000Z</published>
-    <updated>2014-06-04T13:59:30.000Z</updated>
+    <updated>2014-06-05T11:41:58.000Z</updated>
     <content type="html"><![CDATA[<ul>
 <li>Hello Swift<br>下载Xcode6之后，新建工程，创建Playground就可以直接执行Swift代码：</li>
 </ul>
@@ -249,16 +260,16 @@ numbers.map({ <span class="built_in">number</span> <span class="operator">in</sp
 ]]></content>
     
     
-      <category term="Swift" scheme="http://SFKong.github.com/tags/Swift/"/>
+      <category term="Swift" scheme="http://Murk.github.com/tags/Swift/"/>
     
-      <category term="Xcode 6" scheme="http://SFKong.github.com/tags/Xcode%206/"/>
+      <category term="Xcode 6" scheme="http://Murk.github.com/tags/Xcode%206/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[UICollectionView用法]]></title>
-    <link href="http://SFKong.github.com/2014/05/14/uicollectionview%E7%94%A8%E6%B3%95/"/>
-    <id>http://SFKong.github.com/2014/05/14/uicollectionview用法/</id>
+    <link href="http://Murk.github.com/2014/05/14/uicollectionview%E7%94%A8%E6%B3%95/"/>
+    <id>http://Murk.github.com/2014/05/14/uicollectionview用法/</id>
     <published>2014-05-14T14:40:09.000Z</published>
     <updated>2014-05-14T14:40:09.000Z</updated>
     <content type="html"><![CDATA[]]></content>
@@ -268,8 +279,8 @@ numbers.map({ <span class="built_in">number</span> <span class="operator">in</sp
   
   <entry>
     <title><![CDATA[使用CFStringTokenizerRef进行分词]]></title>
-    <link href="http://SFKong.github.com/2014/05/14/%E4%BD%BF%E7%94%A8cfstringtokenizerref%E8%BF%9B%E8%A1%8C%E5%88%86%E8%AF%8D/"/>
-    <id>http://SFKong.github.com/2014/05/14/使用cfstringtokenizerref进行分词/</id>
+    <link href="http://Murk.github.com/2014/05/14/%E4%BD%BF%E7%94%A8cfstringtokenizerref%E8%BF%9B%E8%A1%8C%E5%88%86%E8%AF%8D/"/>
+    <id>http://Murk.github.com/2014/05/14/使用cfstringtokenizerref进行分词/</id>
     <published>2014-05-14T14:19:09.000Z</published>
     <updated>2014-05-14T14:37:42.000Z</updated>
     <content type="html"><![CDATA[<p>使用CFStringTokenizer可以对string进行分词，示例代码：</p>
@@ -337,18 +348,18 @@ numbers.map({ <span class="built_in">number</span> <span class="operator">in</sp
 ]]></content>
     
     
-      <category term="分词" scheme="http://SFKong.github.com/tags/%E5%88%86%E8%AF%8D/"/>
+      <category term="分词" scheme="http://Murk.github.com/tags/%E5%88%86%E8%AF%8D/"/>
     
-      <category term="Objective-C" scheme="http://SFKong.github.com/tags/Objective-C/"/>
+      <category term="Objective-C" scheme="http://Murk.github.com/tags/Objective-C/"/>
     
-      <category term="CFStringTokenizer" scheme="http://SFKong.github.com/tags/CFStringTokenizer/"/>
+      <category term="CFStringTokenizer" scheme="http://Murk.github.com/tags/CFStringTokenizer/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Objective-C中属性@property中atomic的实现]]></title>
-    <link href="http://SFKong.github.com/2014/04/27/objective-c%E4%B8%AD%E5%B1%9E%E6%80%A7@property%E4%B8%ADatomic%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
-    <id>http://SFKong.github.com/2014/04/27/objective-c中属性@property中atomic的实现/</id>
+    <link href="http://Murk.github.com/2014/04/27/objective-c%E4%B8%AD%E5%B1%9E%E6%80%A7@property%E4%B8%ADatomic%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://Murk.github.com/2014/04/27/objective-c中属性@property中atomic的实现/</id>
     <published>2014-04-27T14:15:36.000Z</published>
     <updated>2014-04-27T15:20:52.000Z</updated>
     <content type="html"><![CDATA[<p>Objective-C中，属性@property默认是线程不安全的，也就是常见的nonatomic，这个时候，如果多个线程同时操作这个属性就可能会出现问题，这时需要设置属性为atomic，当然也可以通过代码来控制线程安全；</p>
@@ -478,16 +489,16 @@ numbers.map({ <span class="built_in">number</span> <span class="operator">in</sp
 ]]></content>
     
     
-      <category term="同步锁" scheme="http://SFKong.github.com/tags/%E5%90%8C%E6%AD%A5%E9%94%81/"/>
+      <category term="同步锁" scheme="http://Murk.github.com/tags/%E5%90%8C%E6%AD%A5%E9%94%81/"/>
     
-      <category term="GCD" scheme="http://SFKong.github.com/tags/GCD/"/>
+      <category term="GCD" scheme="http://Murk.github.com/tags/GCD/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[使用GCD替换performSelector这一类方法]]></title>
-    <link href="http://SFKong.github.com/2014/04/27/mrc%E5%92%8Carc%E4%B8%ADblock%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
-    <id>http://SFKong.github.com/2014/04/27/mrc和arc中block的内存管理/</id>
+    <link href="http://Murk.github.com/2014/04/27/mrc%E5%92%8Carc%E4%B8%ADblock%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    <id>http://Murk.github.com/2014/04/27/mrc和arc中block的内存管理/</id>
     <published>2014-04-27T11:54:44.000Z</published>
     <updated>2014-04-27T15:22:03.000Z</updated>
     <content type="html"><![CDATA[<p>在Objective-C中有这样一类方法</p>
@@ -521,16 +532,16 @@ numbers.map({ <span class="built_in">number</span> <span class="operator">in</sp
 ]]></content>
     
     
-      <category term="GCD" scheme="http://SFKong.github.com/tags/GCD/"/>
+      <category term="GCD" scheme="http://Murk.github.com/tags/GCD/"/>
     
-      <category term="block" scheme="http://SFKong.github.com/tags/block/"/>
+      <category term="block" scheme="http://Murk.github.com/tags/block/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[xcode更新到5.1报错：Cast from pointer to smaller type 'int' loses information]]></title>
-    <link href="http://SFKong.github.com/2014/04/22/xcode%E6%9B%B4%E6%96%B0%E5%88%B051%E6%8A%A5%E9%94%99%EF%BC%9Acast-from-pointer-to-smaller-type-int-loses-information/"/>
-    <id>http://SFKong.github.com/2014/04/22/xcode更新到51报错：cast-from-pointer-to-smaller-type-int-loses-information/</id>
+    <link href="http://Murk.github.com/2014/04/22/xcode%E6%9B%B4%E6%96%B0%E5%88%B051%E6%8A%A5%E9%94%99%EF%BC%9Acast-from-pointer-to-smaller-type-int-loses-information/"/>
+    <id>http://Murk.github.com/2014/04/22/xcode更新到51报错：cast-from-pointer-to-smaller-type-int-loses-information/</id>
     <published>2014-04-22T03:42:46.000Z</published>
     <updated>2014-04-27T15:21:50.000Z</updated>
     <content type="html"><![CDATA[<p>Xcode更新到5.1版本之后，项目中一个SearchCore文件报错</p>
@@ -542,7 +553,7 @@ numbers.map({ <span class="built_in">number</span> <span class="operator">in</sp
 ]]></content>
     
     
-      <category term="xcode" scheme="http://SFKong.github.com/tags/xcode/"/>
+      <category term="xcode" scheme="http://Murk.github.com/tags/xcode/"/>
     
   </entry>
   
