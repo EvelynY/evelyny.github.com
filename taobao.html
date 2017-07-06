@@ -21,6 +21,9 @@
 var Request = new Object();
 Request = GetRequest();
   var tourl = Request["to"];
-  self.location = tourl;
+  if (tourl)
+  {
+      self.location = tourl;
+  }
 </script>
 
